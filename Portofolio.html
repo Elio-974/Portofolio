@@ -1,0 +1,919 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio | Mahasiswa Informatika</title>
+
+    <style>
+        /* ===== PENGATURAN DASAR ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --background: #0b0b0b;
+            --card: #171717;
+            --text: #ffffff;
+            --muted: #aaaaaa;
+            --accent: #d5ff62;
+            --border: #292929;
+        }
+
+        body.light {
+            --background: #f5f5f0;
+            --card: #ffffff;
+            --text: #171717;
+            --muted: #666666;
+            --accent: #537b00;
+            --border: #dddddd;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            transition: 0.3s;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section {
+            padding: 85px 0;
+        }
+
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .section-description {
+            color: var(--muted);
+            margin-bottom: 35px;
+        }
+
+        .highlight {
+            color: var(--accent);
+        }
+
+        /* ===== NAVBAR ===== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--background);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 75px;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 23px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .theme-button {
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--text);
+            padding: 9px 13px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        /* ===== HERO / BERANDA ===== */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 55px;
+            width: 100%;
+        }
+
+        .hero-label {
+            display: inline-block;
+            color: var(--accent);
+            border: 1px solid var(--border);
+            padding: 7px 14px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 6vw, 68px);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            color: var(--muted);
+            margin-bottom: 28px;
+            max-width: 500px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 21px;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            transition: 0.3s;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #111111;
+            border-color: var(--accent);
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            opacity: 0.85;
+        }
+
+        .profile-frame {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 12px;
+            border-radius: 25px;
+            max-width: 350px;
+            margin: auto;
+        }
+
+        .profile-frame img {
+            width: 100%;
+            height: 390px;
+            object-fit: cover;
+            border-radius: 18px;
+            display: block;
+        }
+
+        .profile-caption {
+            padding: 15px 5px 5px;
+            text-align: center;
+        }
+
+        .profile-caption p {
+            margin: 0;
+            font-size: 13px;
+        }
+
+        /* ===== ABOUT ME ===== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .about-text {
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            padding: 13px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .info-list strong {
+            display: inline-block;
+            width: 125px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .stat-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .stat-card h3 {
+            font-size: 30px;
+            color: var(--accent);
+        }
+
+        .stat-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* ===== WORK GALLERY ===== */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .project-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent);
+        }
+
+        .project-image {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 55px;
+            background: linear-gradient(135deg, #26371c, #111111);
+        }
+
+        .project-card:nth-child(2) .project-image {
+            background: linear-gradient(135deg, #292747, #111111);
+        }
+
+        .project-card:nth-child(3) .project-image {
+            background: linear-gradient(135deg, #493326, #111111);
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 10px;
+        }
+
+        .project-info p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            display: inline-block;
+            color: var(--accent);
+            background: var(--background);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            margin: 3px 3px 0 0;
+        }
+
+        /* ===== WHAT I CAN DO ===== */
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 25px;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            border-color: var(--accent);
+        }
+
+        .skill-icon {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .skill-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* ===== ACHIEVEMENT ===== */
+        .achievement-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .achievement-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 22px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+        }
+
+        .achievement-icon {
+            font-size: 30px;
+        }
+
+        .achievement-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .contact-box p {
+            color: var(--muted);
+            margin: 15px auto 25px;
+            max-width: 550px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .contact-links a {
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            padding: 10px 17px;
+            font-size: 14px;
+        }
+
+        .contact-links a:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            color: var(--muted);
+            padding: 25px 0;
+            border-top: 1px solid var(--border);
+            font-size: 13px;
+        }
+
+        /* ===== ANIMASI ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.7s, transform 0.7s;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== TAMPILAN HP ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 10px;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+            }
+
+            .nav-links a {
+                font-size: 11px;
+            }
+
+            .logo {
+                font-size: 17px;
+            }
+
+            nav {
+                padding: 12px 0;
+            }
+
+            .hero {
+                padding: 60px 0;
+                min-height: auto;
+            }
+
+            .hero-content,
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content {
+                gap: 35px;
+            }
+
+            .profile-frame {
+                max-width: 280px;
+            }
+
+            .profile-frame img {
+                height: 320px;
+            }
+
+            .project-grid,
+            .skill-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 29px;
+            }
+
+            .contact-box {
+                padding: 25px 18px;
+            }
+
+            .theme-button {
+                padding: 7px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <header>
+        <nav class="container">
+            <a href="#home" class="logo">
+                PORTO<span class="highlight">FOLIO.</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#work">Work</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#achievement">Achievement</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <button class="theme-button" id="themeButton"
+                    aria-label="Ganti tema">☀️</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- ===== HERO ===== -->
+        <section class="hero container" id="home">
+            <div class="hero-content">
+
+                <div class="reveal">
+                    <span class="hero-label">
+                        👋 Information Systems Student
+                    </span>
+
+                    <h1>
+                        Halo, saya<br>
+                        <span class="highlight">Early Virtuous Siwi Sunarya.</span>
+                    </h1>
+
+                    <p>
+                        Saya adalah mahasiswa Sistem Informasi yang tertarik
+                        pada teknologi, pemrograman, dan pengembangan
+                        solusi digital yang bermanfaat bagi perusahaan maupun masyarakat
+                        yang baru akan memulai bisnis pertamanya.
+                    </p>
+
+                    <div class="buttons">
+                        <a href="#work" class="btn btn-primary">
+                            Lihat Karya Saya ↘
+                        </a>
+
+                        <a href="#contact" class="btn">
+                            Hubungi Saya
+                        </a>
+                    </div>
+                </div>
+
+                <div class="profile-frame reveal">
+                    <img src="Profil.png" alt="Foto profil">
+
+                    <div class="profile-caption">
+                        <h3>Early Virtuous Siwi Sunarya</h3>
+                        <p>Information Systems Student</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== WORK GALLERY ===== -->
+        <section class="section container" id="work">
+            <div class="reveal">
+                <h2 class="section-title">
+                    Work <span class="highlight">Gallery.</span>
+                </h2>
+
+                <p class="section-description">
+                    Beberapa proyek dan karya yang saya kerjakan.
+                </p>
+            </div>
+
+            <div class="project-grid">
+
+                <article class="project-card reveal">
+                    <div class="project-image">💻</div>
+
+                    <div class="project-info">
+                        <h3>
+                            <a href="work.html" class="project-title">
+                                Website Portofolio
+                            </a>
+                        </h3>
+
+                        <p>
+                            Website pribadi untuk memperkenalkan
+                            diri dan menampilkan hasil karya.
+                        </p>
+
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                </article>
+
+                <article class="project-card reveal">
+                    <div class="project-image">📊</div>
+
+                    <div class="project-info">
+                        <h3>
+                            <a href="data.html" class="project-title">
+                                Analisis Data
+                            </a>
+                        </h3>
+
+                        <p>
+                            Proyek latihan untuk mengolah,
+                            menganalisis, dan menyajikan data.
+                        </p>
+
+                        <span class="tag">Python</span>
+                        <span class="tag">SQL</span>
+                    </div>
+                </article>
+
+                <article class="project-card reveal">
+                    <div class="project-image">🎨</div>
+
+                    <div class="project-info">
+                        <h3>
+                            <a href="desain.html" class="project-title">
+                                Desain Digital
+                            </a>
+                        </h3>
+
+                        <p>
+                            Pembuatan desain poster dan tampilan
+                            visual untuk kebutuhan digital.
+                        </p>
+
+                        <span class="tag">Canva</span>
+                        <span class="tag">UI/UX</span>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ===== WHAT I CAN DO ===== -->
+        <section class="section container" id="skills">
+            <div class="reveal">
+                <h2 class="section-title">
+                    What I Can <span class="highlight">Do.</span>
+                </h2>
+
+                <p class="section-description">
+                    Kemampuan yang sedang saya pelajari dan kembangkan.
+                </p>
+            </div>
+
+            <div class="skill-grid">
+
+                <div class="skill-card reveal">
+                    <div class="skill-icon">🌐</div>
+                    <h3>Web Development</h3>
+
+                    <p>
+                        Membuat halaman website menggunakan
+                        HTML, CSS, dan JavaScript.
+                    </p>
+                </div>
+
+                <div class="skill-card reveal">
+                    <div class="skill-icon">🐍</div>
+                    <h3>Programming</h3>
+
+                    <p>
+                        Mempelajari dasar pemrograman Python,
+                        logika, dan penyelesaian masalah.
+                    </p>
+                </div>
+
+                <div class="skill-card reveal">
+                    <div class="skill-icon">🎨</div>
+                    <h3>Creative Design</h3>
+
+                    <p>
+                        Membuat desain visual, poster,
+                        dan konten digital yang menarik.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== ABOUT ME ===== -->
+        <section class="section container" id="about">
+            <div class="reveal">
+                <h2 class="section-title">
+                    About <span class="highlight">Me.</span>
+                </h2>
+
+                <p class="section-description">
+                    Kenali saya lebih dekat.
+                </p>
+            </div>
+
+            <div class="about-grid">
+
+                <div class="reveal">
+                    <h3>Perjalanan Saya</h3>
+
+                    <p class="about-text">
+                        Saya adalah mahasiswa Program Studi Sistem
+                        Informasi yang memiliki ketertarikan pada
+                        perkembangan teknologi digital.
+                    </p>
+
+                    <p class="about-text">
+                        Saat ini saya terus belajar pemrograman,
+                        pengembangan website, dan pengolahan data.
+                        Saya percaya bahwa kemampuan dapat berkembang
+                        melalui latihan, pengalaman, dan konsistensi.
+                    </p>
+
+                    <p class="about-text">
+                        Portofolio ini menjadi tempat untuk
+                        mendokumentasikan proses belajar, proyek,
+                        dan pencapaian saya.
+                    </p>
+                </div>
+
+                <div class="reveal">
+                    <ul class="info-list">
+                        <li>
+                            <strong>Nama</strong>
+                            Early Virtuous Siwi Sunarya
+                        </li>
+
+                        <li>
+                            <strong>NIM</strong>
+                            26051214184
+                        </li>
+
+                        <li>
+                            <strong>Program Studi</strong>
+                            Sistem Informasi
+                        </li>
+
+                        <li>
+                            <strong>Universitas</strong>
+                            Universitas Negeri Surabaya
+                        </li>
+
+                        <li>
+                            <strong>Domisili</strong>
+                            Purworejo, Jawa Tengah, Indonesia
+                        </li>
+                    </ul>
+
+                    <div class="stats" style="margin-top: 25px;">
+                        <div class="stat-card">
+                            <h3>02+</h3>
+                            <p>Bidang yang dipelajari</p>
+                        </div>
+
+                        <div class="stat-card">
+                            <h3>100%</h3>
+                            <p>Semangat belajar</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== ACHIEVEMENT ===== -->
+        <section class="section container" id="achievement">
+            <div class="reveal">
+                <h2 class="section-title">
+                    My <span class="highlight">Achievement.</span>
+                </h2>
+
+                <p class="section-description">
+                    Pencapaian, pengalaman, dan perkembangan diri.
+                </p>
+            </div>
+
+            <div class="achievement-list">
+
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">🏅</div>
+
+                    <div>
+                        <h3>Pelatihan / Sertifikat</h3>
+                        <p>2026 · Google Gemini</p>
+
+                        <p>
+                            Gemini Education Trainee.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">🚀</div>
+
+                    <div>
+                        <h3>Proyek Pertama</h3>
+                        <p>2026 · Website Portofolio</p>
+
+                        <p>
+                            Menyelesaikan proyek website portofolio
+                            sebagai bagian dari proses belajar.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">📚</div>
+
+                    <div>
+                        <h3>Pengembangan Skill</h3>
+                        <p>2026 · Pembelajaran mandiri</p>
+
+                        <p>
+                            Terus meningkatkan kemampuan teknologi
+                            melalui latihan dan proyek baru.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== CONTACT ===== -->
+        <section class="section container" id="contact">
+            <div class="contact-box reveal">
+                <h2 class="section-title">
+                    Let's <span class="highlight">Connect.</span>
+                </h2>
+
+                <p>
+                    Saya terbuka untuk berdiskusi, belajar bersama,
+                    berkolaborasi, dan bertukar ide tentang teknologi.
+                    Jangan ragu untuk menghubungi saya!
+                </p>
+
+                <div class="contact-links">
+                    <a href="mailto:earlvy08@gmail.com">
+                        ✉ Email
+                    </a>
+
+                    <a href="https://github.com/Elio-974"
+                       target="_blank" rel="noopener noreferrer">
+                        💻 GitHub
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/early-virtuous-siwi-sunarya-77b836442"
+                       target="_blank" rel="noopener noreferrer">
+                        🔗 LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <p>
+                © <span id="year"></span> Early Virtuous Siwi Sunarya.
+                Dibuat dengan semangat belajar 💚
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Tahun otomatis di footer
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        // Tombol ganti tema
+        const themeButton = document.getElementById("themeButton");
+
+        themeButton.addEventListener("click", function () {
+            document.body.classList.toggle("light");
+
+            if (document.body.classList.contains("light")) {
+                themeButton.textContent = "🌙";
+            } else {
+                themeButton.textContent = "☀️";
+            }
+        });
+
+        // Animasi saat elemen muncul di layar
+        const observer = new IntersectionObserver(
+            function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                    }
+                });
+            },
+            {
+                threshold: 0.15
+            }
+        );
+
+        document.querySelectorAll(".reveal").forEach(
+            function (element) {
+                observer.observe(element);
+            }
+        );
+    </script>
+
+</body>
+</html>

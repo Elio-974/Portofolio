@@ -1,0 +1,224 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Works | Portfolio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #101010;
+      color: #ffffff;
+      padding: 30px 8%;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 70px;
+    }
+
+    nav a {
+      color: #c5ff4a;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .heading {
+      margin-bottom: 40px;
+    }
+
+    .heading p {
+      color: #aaa;
+      margin-top: 12px;
+      line-height: 1.7;
+    }
+
+    .heading h1 {
+      font-size: clamp(32px, 5vw, 52px);
+    }
+
+    .heading span {
+      color: #c5ff4a;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .project-card {
+      background: #1b1b1b;
+      border: 1px solid #303030;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: #c5ff4a;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-info {
+      padding: 22px;
+    }
+
+    .project-info h2 {
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .project-info p {
+      color: #aaa;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .tags {
+      color: #c5ff4a;
+      font-size: 12px;
+      margin-bottom: 22px;
+    }
+
+    .project-link {
+      display: inline-block;
+      color: #101010;
+      background: #c5ff4a;
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      color: #777;
+      margin-top: 70px;
+      padding-bottom: 20px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="Portofolio.html">← Kembali ke Portfolio</a>
+    <span>MY WORKS.</span>
+  </nav>
+
+  <section class="heading">
+    <h1>My <span>Projects.</span></h1>
+    <p>
+      Berikut adalah beberapa website yang telah saya buat
+      sebagai bagian dari proses belajar dan pengembangan
+      kemampuan saya di bidang teknologi.
+    </p>
+  </section>
+
+  <section class="projects">
+
+    <!-- PROJECT 1 -->
+    <article class="project-card">
+      <img
+        src="https://placehold.co/600x400/222222/c5ff4a?text=Website+Portfolio"
+        alt="Preview Website Portfolio"
+      >
+
+      <div class="project-info">
+        <h2>Website Portfolio</h2>
+        <p>
+          Website pribadi untuk memperkenalkan diri,
+          menampilkan kemampuan, dan memamerkan hasil karya.
+        </p>
+        <div class="tags">HTML · CSS · JavaScript</div>
+        <a href="https://example.com"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="project-link">
+          Lihat Website ↗
+        </a>
+      </div>
+    </article>
+
+    <!-- PROJECT 2 -->
+    <article class="project-card">
+      <img
+        src="https://placehold.co/600x400/222222/c5ff4a?text=Project+2"
+        alt="Preview Project 2"
+      >
+
+      <div class="project-info">
+        <h2>Website Project 2</h2>
+        <p>
+          Tuliskan deskripsi singkat tentang website,
+          tujuan pembuatannya, dan fitur utamanya.
+        </p>
+        <div class="tags">HTML · CSS</div>
+        <a href="https://example.com"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="project-link">
+          Lihat Website ↗
+        </a>
+      </div>
+    </article>
+
+    <!-- PROJECT 3 -->
+    <article class="project-card">
+      <img
+        src="https://placehold.co/600x400/222222/c5ff4a?text=Project+3"
+        alt="Preview Project 3"
+      >
+
+      <div class="project-info">
+        <h2>Website Project 3</h2>
+        <p>
+          Tuliskan informasi mengenai proyek lainnya
+          yang ingin kamu tampilkan di portofolio.
+        </p>
+        <div class="tags">JavaScript · Web Design</div>
+        <a href="https://example.com"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="project-link">
+          Lihat Website ↗
+        </a>
+      </div>
+    </article>
+
+  </section>
+
+  <footer>
+    © <span id="year"></span> My Portfolio. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
+```
